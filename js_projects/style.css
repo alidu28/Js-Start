@@ -1,0 +1,74 @@
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.card:hover {
+  color: rgb(88 188 250 / 100%);
+  transition: 1s;
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+.card:hover::before,
+.card:hover::after{
+    animation: none;
+    opacity: 0;
+}
+
+.card::before{
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #6a3094,
+    #c02425 44%,
+    #f0cb35
+  );
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: animate 2.5s linear infinite;
+}
+
+.card::after{
+    content: "";
+    position: absolute;
+    top: calc(65vh / 6);
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    filter: blur(calc(65vh / 6));
+    background-image: linear-gradient(
+    var(--rotate),
+    #6a3094,
+    #c02425 44%,
+    #f0cb35
+  );
+  opacity: 1;
+  transition: opacity .5s;
+  animation: animate 2.5s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+
